@@ -1,0 +1,13 @@
+Mise en place de la sauvegarde de la base de données "Village Green"
+
+Ligne de commandes :
+mysqldump --user=admin2 --password=******* villagegreen > backup_villagegreen.sql
+
+
+
+Test d'une restauration de la base de données "Village Green"
+
+Ligne de commandes :
+cat backup_villagegreen.sql | mysql --user=admin2 --password=******* new_villagegreen
+
+Avant de faire cette ligne de commandes pour la restauration, j'ai créé une nouvelle base de données nommée "new_villagegreen" dans HeidiSQL.
