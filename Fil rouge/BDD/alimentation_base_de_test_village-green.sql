@@ -1,6 +1,6 @@
 /* Données pour la table FOURNISSEURS */
 
-INSERT INTO `Fournisseur` (`nom_fournisseur`, 
+INSERT INTO `fournisseur` (`nom_fournisseur`, 
 `prenom_fournisseur`,
 `adresse_fournisseur`,
 `ville_fournisseur`,
@@ -16,7 +16,7 @@ INSERT INTO `Fournisseur` (`nom_fournisseur`,
 
 /* Données pour la table COMMERCIAL */
 
-INSERT INTO `Commercial` (`nom_commercial`,
+INSERT INTO `commercial` (`nom_commercial`,
 `prenom_commercial`) VALUES
 
     ('FAUCHOIS', 'Pascale'),
@@ -33,33 +33,24 @@ INSERT INTO `Commercial` (`nom_commercial`,
 
 /* Données pour la table Sous_catégorie */
 
-INSERT INTO `Sous_catégorie` (`nom_categorie`) VALUES
+INSERT INTO `sous_categorie` (`id_sous_categorie`, `nom_categorie`) VALUES
 
-    ('Microphone'),
-    ('Différents câbles'),
-    ('Sono'),
-    ('Cases'),
-    ('Saxophones'),
-    ('Trompettes'),
-    ('Flûtes'),
-    ('Guitares'),
-    ('Pianos'),
-    ('Harpes'),
-    ('Batteries'),
-    ('Cymbales'),
-    ('Tambours');
+    (1, 'ACCESSOIRES'),
+    (2, 'INSTRUMENTS À VENT'),
+    (3, 'INSTRUMENTS À CORDES'),
+    (4, 'INSTRUMENTS À PERCUSSIONS');
 
 
 /* Données pour la table CLIENT */
 
-INSERT INTO `Client` (`nom_client`,
+INSERT INTO `client` (`nom_client`,
 `prenom_client`,
 `adresse_client`,
 `cp_client`,
 `ville_client`,
 `telephone_client`,
 `type_client`,
-`Id_Commercial`) VALUES 
+`id_commercial`) VALUES 
 
     ('NICLO', 'Vincent', '10 avenue de l Opera', '75000', 'Paris', '0758246589', 'pro', 1),
     ('ROCH', 'Voisine', '65 avenue d Hélène', '14000', 'Caen', '0632541289', 'pro', 2),
@@ -75,81 +66,92 @@ INSERT INTO `Client` (`nom_client`,
 
 /* Données pour la table Catégorie */    
 
-INSERT INTO `Catégorie` (`nom_categorie`) VALUES
+INSERT INTO `categorie` (`id_categorie`, `nom_categorie`, `id_sous_categorie`) VALUES
 
-    ('ACCESSOIRES'),
-    ('INSTRUMENTS À VENT'),
-    ('INSTRUMENTS À CORDES'),
-    ('INSTRUMENTS À PERCUSSIONS');
+    (1, 'Microphone', 1),
+    (2, 'Différents câbles', 1),
+    (3, 'Sono', 1),
+    (4, 'Cases', 1),
+    (5, 'Saxophones', 2),
+    (6, 'Trompettes', 2),
+    (7, 'Flûtes', 2),
+    (8, 'Guitares', 3),
+    (9, 'Pianos', 3),
+    (10, 'Harpes', 3),
+    (11, 'Batteries', 4),
+    (12, 'Cymbales', 4),
+    (13, 'Tambours', 4);
 
 /* Données pour la table PRODUIT */
 
-INSERT INTO `Produit` (`nom_produit`,
+INSERT INTO `produit` (`nom_produit`,
 `prix_achat`,
 `photo`,
 `stock_produit`,
-`libelle_long`) VALUES
+`libelle_long`,
+`id_categorie`,
+`id_fournisseur`) VALUES
 
     ('Tambour', 249.99, 'tambour.png', 5, 'Les tambours basses brésiliens vous garantissent une parfaite base rythmiques, 
     que ce soit lors d un concert de votre groupe de samba ou lors d un défilé de carnaval! Le son profond émis grâce à la 
     frappe des baguettes sur la peau et la résonance de la peau, du tambour et de la colonne d air, forme la tonalité de base de
-     la samba et enchantera à tout point votre public.'),
+     la samba et enchantera à tout point votre public.',13 , 4 ),
     
     ('Cymbales', 149.99, 'cymbales.png', 3, 'Affichant un excellent rapport qualité-prix, ces cymbales sont très appréciées. 
     La cymbale crash présentée ici est fabriquée à partir d un alliage de métal spécial et recouverte d un revêtement en laiton. 
-    Elle possède un diamètre de 18.'),
+    Elle possède un diamètre de 18.', 12, 4),
 
     ('Batterie', 449.99, 'batterie.png', 1, 'Un ensemble avec tout ce dont vous avez besoin pour jouer de la batterie! 
     Le set complet de timbales, de qualité de construction robuste avec des pieds stables pour un excellent accord et avec une 
     sonorité exceptionnelle. Un ensemble de matériel avec les bras de tom faciles à ajuster pour une adaptation optimale à 
     toutes les tailles de corps. Le hi-hat et la pédale de grosse caisse sont livrés avec un palan de chaîne. 
     Tous les tambours sont équipés de memo locks, ce qui garantit un montage facile et qui évite le réajustement lors d un 
-    remontage. Les caisses sont faites de peaux de haute qualité et pré-assemblées, à part quelques poignées.'),
+    remontage. Les caisses sont faites de peaux de haute qualité et pré-assemblées, à part quelques poignées.', 11, 4),
 
     ('Harpe', 299.99, 'harpe.jpg', 4, 'Pour tous les amis de la musique celtique, la harpe celtique à 29 cordes offre une 
-    sonorité de bien-être pour tous.'),
+    sonorité de bien-être pour tous.', 10, 3),
 
     ('Piano', 799.49, 'piano.png', 1, 'Manque d espace ou de budget ? Ne cherchez plus, ce modèle est le piano qu il vous faut ! 
-    Facile à prendre en main, vous serez surpris par les qualités qui font de lui un grand piano, à petit prix !'),
+    Facile à prendre en main, vous serez surpris par les qualités qui font de lui un grand piano, à petit prix !', 9, 3),
 
     ('Guitare', 159.49, 'guitare.png', 6, 'A ce prix-là, plus aucune excuse pour ne pas s essayer à la guitare. Choisissez votre 
-    modèle, classique, folk ou ukulélé, et jouez !'),
+    modèle, classique, folk ou ukulélé, et jouez !', 8, 3),
 
     ('Flûte', 99.99, 'flute.jpg', 10, 'Cette flûte offre une tête et un corps en maillechort finition argent pour une sonorité 
     riche et chaude. Les mécanismes sont d une fiabilité éprouvée et la flûte d une justesse impeccable. Le confort de jeu n est 
     pas en reste puisque les formes des clés et leurs placements ont été pensés de façon ergonomique pour un positionnement 
-    naturel de la main.'),
+    naturel de la main.', 7, 2),
 
     ('Trompette', 119.99, 'trompette.jpg', 9, 'Particulièrement adaptée aux débutants par sa prise en main facile, 
     les qualités mécaniques de cette trompette permettent une progression aisée et rapide. 
-    La trompette sera l instrument idéal pour accompagner vos premiers pas dans l apprentissage de la musique.'),
+    La trompette sera l instrument idéal pour accompagner vos premiers pas dans l apprentissage de la musique.', 6, 2),
 
     ('Saxophone', 179.99, 'saxo.png', 8, 'Ce Saxo est basé sur le tube original d un saxophone alto avec un mécanisme 
     complètement redessiné et un positionnement des trous de tonalité pour les plus petits qui, auparavant, devaient 
-    "attendre d être plus grands" avant d apprendre à jouer du saxophone.'),
+    "attendre d être plus grands" avant d apprendre à jouer du saxophone.', 5, 2),
 
     ('Cases', 49.49, 'cases.png', 15, 'Avec cette case, vous obtiendrez un flight case vous permettant de ranger et de 
     transporter jusqu à huit jeux de lumière en toute sécurité. Ce flight case dispose d un extérieur robuste et d un intérieur 
     qui est divisé en neuf compartiments individuels qui sont tous revêtus de mousse, à l exception celui du milieu. 
     Dans le compartiment central, vous pouvez stocker vos accessoires. Notez enfin que ce flight case dispose de quatre poignées 
-    encastrées et de fermetures papillons.'),
+    encastrées et de fermetures papillons.', 4, 1),
 
     ('Sono', 1099.99, 'sono.jpg', 2, 'Sono portable haut de gamme sur batterie, puissance 700W, excellente qualit de son, 
-    idéale pour diffuser de la musique, équipé de 2 micros sans fil UHF, parfaite pour vos prestations de qualité !'),
+    idéale pour diffuser de la musique, équipé de 2 micros sans fil UHF, parfaite pour vos prestations de qualité !', 3, 1),
 
     ('Câbles', 9.99, 'cables.png', 100, 'Ces câbles sont épais, souples et robustes. Ils sont fabriqués avec des composants de 
     haute qualité permettant de restituer votre signal avec la plus grande fidélité. Grâce à leur blindage hélicoïdal 
     ultra-résistant, ces câbles sont conçus pour éviter toute torsion, entortillement ni la moindre déformation, tout en vous 
     garantissant un son sans aucun bruit parasite. Sur scène comme en studio, branchez votre équipement et jouez en toute 
-    confiance.'),
+    confiance.', 2, 1),
 
     ('Micro', 29.99, 'micro.png', 50, 'Ce micro s adapte parfaitement aux contraintes de la voix chantée et permet de nombreuses 
-    utilisations en home studio ou en live.');
+    utilisations en home studio ou en live.', 1, 1);
 
 
 /* Données pour la table COMMANDE */
 
-    INSERT INTO `Commande` (`date_commande`,
+    INSERT INTO `commande` (`date_commande`,
     `detail_commande`,
     `prix_commande`,
     `date_reglement`,
@@ -159,27 +161,29 @@ INSERT INTO `Produit` (`nom_produit`,
     `cp_livraison`,
     `adresse_facturation`,
     `ville_facturation`,
-    `cp_facturation`) VALUES
+    `cp_facturation`,
+    `id_client`) VALUES
 
-        ("2021-11-10", 'saxo + cable', 189.98, "2021-11-10", 0, '56 rue des Parapluies', 'Cabara', '33420', '56 rue des Parapluies', 'Cabara', '33420'),
-        ("2021-11-11", 'guitare', 159.49, "2021-11-11",0 , '99 rue de la femme', 'Octon', '34800', '99 rue de la femme', 'Octon', '34800');
+        ("2021-11-10", 'saxo + cable', 189.98, "2021-11-10", 0, '56 rue des Parapluies', 'Cabara', '33420', '56 rue des Parapluies', 'Cabara', '33420', 3),
+        ("2021-11-11", 'guitare', 159.49, "2021-11-11",0 , '99 rue de la femme', 'Octon', '34800', '99 rue de la femme', 'Octon', '34800', 6);
 
 
 /* Données pour la table LIVRAISON */
 
-    INSERT INTO `Livraison` (`bon_livraison`,
+    INSERT INTO `livraison` (`bon_livraison`,
     `date_livraison`,
-    `date_expedition`) VALUES
+    `date_expedition`,
+    `id_commande`) VALUES
 
-       ('bon de livraison', "2021-11-21", "2021-11-18"),
-       ('bon de livraison', "2021-11-22", "2021-11-17"); 
+       ('bon de livraison', "2021-11-21", "2021-11-18", 1),
+       ('bon de livraison', "2021-11-22", "2021-11-17", 2); 
 
     
 /* Données pour la table contient */
 
-INSERT INTO `contient` (`Id_Produit`,
-`Id_livraison`,
-`quantité_produit`) VALUES
+INSERT INTO `contient` (`id_produit`,
+`id_livraison`,
+`quantite_produit`) VALUES
 
     (1,1,1),
     (2,2,1);
@@ -187,9 +191,9 @@ INSERT INTO `contient` (`Id_Produit`,
 
 /* Données pour la table SeComposeDe */
 
-INSERT INTO `SeComposeDe` (`Id_Produit`,
-`Id_Commande`,
-`quantité_commandé`) VALUES
+INSERT INTO `secomposede` (`id_produit`,
+`id_commande`,
+`quantite_commandé`) VALUES
 
     (1,1,1),
     (2,2,1);

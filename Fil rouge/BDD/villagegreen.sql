@@ -4,32 +4,32 @@ CREATE DATABASE villagegreen;
 
 USE villagegreen;
 
-CREATE TABLE Fournisseur(
-   Id_Fournisseur INT AUTO_INCREMENT,
+CREATE TABLE fournisseur(
+   id_fournisseur INT AUTO_INCREMENT NOT NULL,
    nom_fournisseur VARCHAR(50) ,
    prenom_fournisseur VARCHAR(50) ,
    adresse_fournisseur VARCHAR(50) ,
    ville_fournisseur VARCHAR(50) ,
    cp_fournisseur VARCHAR(5) ,
    telephone_fournisseur VARCHAR(10) ,
-   PRIMARY KEY(Id_Fournisseur)
+   PRIMARY KEY(id_fournisseur)
 );
 
-CREATE TABLE Commercial(
-   Id_Commercial INT AUTO_INCREMENT,
+CREATE TABLE commercial(
+   id_commercial INT AUTO_INCREMENT NOT NULL,
    nom_commercial VARCHAR(50) ,
    prenom_commercial VARCHAR(50) ,
-   PRIMARY KEY(Id_Commercial)
+   PRIMARY KEY(id_commercial)
 );
 
-CREATE TABLE Sous_catégorie(
-   Id_Sous_catégorie INT AUTO_INCREMENT,
+CREATE TABLE sous_categorie(
+   id_sous_categorie INT AUTO_INCREMENT NOT NULL,
    nom_categorie VARCHAR(50) ,
-   PRIMARY KEY(Id_Sous_catégorie)
+   PRIMARY KEY(id_sous_categorie)
 );
 
-CREATE TABLE Client(
-   Id_Client INT AUTO_INCREMENT,
+CREATE TABLE client(
+   id_client INT AUTO_INCREMENT NOT NULL,
    nom_client VARCHAR(50) ,
    prenom_client VARCHAR(50) ,
    adresse_client VARCHAR(50) ,
@@ -37,35 +37,35 @@ CREATE TABLE Client(
    cp_client VARCHAR(5) ,
    telephone_client VARCHAR(10) ,
    type_client VARCHAR(3),
-   Id_Commercial INT DEFAULT NULL,
-   PRIMARY KEY(Id_Client),
-   FOREIGN KEY(Id_Commercial) REFERENCES Commercial(Id_Commercial)
+   id_commercial INT DEFAULT NULL,
+   PRIMARY KEY(id_client),
+   FOREIGN KEY(id_commercial) REFERENCES commercial(id_commercial)
 );
 
-CREATE TABLE Catégorie(
-   Id_Catégorie INT AUTO_INCREMENT,
+CREATE TABLE categorie(
+   id_categorie INT AUTO_INCREMENT NOT NULL,
    nom_categorie VARCHAR(50) ,
-   Id_Sous_catégorie INT DEFAULT NULL,
-   PRIMARY KEY(Id_Catégorie),
-   FOREIGN KEY(Id_Sous_catégorie) REFERENCES Sous_catégorie(Id_Sous_catégorie)
+   id_sous_categorie INT DEFAULT NULL,
+   PRIMARY KEY(id_categorie),
+   FOREIGN KEY(id_sous_categorie) REFERENCES sous_categorie(id_sous_categorie)
 );
 
-CREATE TABLE Produit(
-   Id_Produit INT AUTO_INCREMENT,
+CREATE TABLE produit(
+   id_produit INT AUTO_INCREMENT NOT NULL,
    nom_produit VARCHAR(50) ,
    prix_achat DECIMAL(15,2)  ,
    photo VARCHAR(50) ,
    stock_produit INT,
-   libelle_long VARCHAR(1000) ,
-   Id_Catégorie INT DEFAULT NULL,
-   Id_Fournisseur INT DEFAULT NULL,
-   PRIMARY KEY(Id_Produit),
-   FOREIGN KEY(Id_Catégorie) REFERENCES Catégorie(Id_Catégorie),
-   FOREIGN KEY(Id_Fournisseur) REFERENCES Fournisseur(Id_Fournisseur)
+   libelle_long VARCHAR(1000),
+   id_categorie INT DEFAULT NULL,
+   id_fournisseur INT DEFAULT NULL,
+   PRIMARY KEY(id_produit),
+   FOREIGN KEY(id_categorie) REFERENCES categorie(id_categorie),
+   FOREIGN KEY(id_fournisseur) REFERENCES fournisseur(id_fournisseur)
 );
 
-CREATE TABLE Commande(
-   Id_Commande INT AUTO_INCREMENT,
+CREATE TABLE commande(
+   id_commande INT AUTO_INCREMENT NOT NULL,
    detail_commande VARCHAR(50),
    date_commande DATE,
    prix_commande DECIMAL(15,2)  ,
@@ -77,35 +77,35 @@ CREATE TABLE Commande(
    adresse_facturation VARCHAR(50) ,
    ville_facturation VARCHAR(50) ,
    cp_facturation VARCHAR(5) ,
-   Id_Client INT DEFAULT NULL,
-   PRIMARY KEY(Id_Commande),
-   FOREIGN KEY(Id_Client) REFERENCES Client(Id_Client)
+   id_client INT DEFAULT NULL,
+   PRIMARY KEY(id_commande),
+   FOREIGN KEY(id_client) REFERENCES client(id_client)
 );
 
-CREATE TABLE Livraison(
-   Id_Livraison INT AUTO_INCREMENT,
+CREATE TABLE livraison(
+   id_livraison INT AUTO_INCREMENT NOT NULL,
    bon_livraison VARCHAR(50) ,
    date_livraison DATE,
    date_expedition DATE,
-   Id_Commande INT DEFAULT NULL,
-   PRIMARY KEY(Id_Livraison),
-   FOREIGN KEY(Id_Commande) REFERENCES Commande(Id_Commande)
+   id_commande INT DEFAULT NULL,
+   PRIMARY KEY(id_livraison),
+   FOREIGN KEY(id_commande) REFERENCES commande(id_commande)
 );
 
 CREATE TABLE contient(
-   Id_Produit INT,
-   Id_Livraison INT,
-   quantité_produit INT,
-   PRIMARY KEY(Id_Produit, Id_Livraison),
-   FOREIGN KEY(Id_Produit) REFERENCES Produit(Id_Produit),
-   FOREIGN KEY(Id_Livraison) REFERENCES Livraison(Id_Livraison)
+   id_produit INT,
+   id_livraison INT,
+   quantite_produit INT,
+   PRIMARY KEY(id_produit, id_livraison),
+   FOREIGN KEY(id_produit) REFERENCES produit(id_produit),
+   FOREIGN KEY(id_livraison) REFERENCES livraison(id_livraison)
 );
 
-CREATE TABLE SeComposeDe(
-   Id_Produit INT,
-   Id_Commande INT,
-   quantité_commandé INT,
-   PRIMARY KEY(Id_Produit, Id_Commande),
-   FOREIGN KEY(Id_Produit) REFERENCES Produit(Id_Produit),
-   FOREIGN KEY(Id_Commande) REFERENCES Commande(Id_Commande)
+CREATE TABLE secomposede(
+   id_produit INT,
+   id_commande INT,
+   quantite_commandé INT,
+   PRIMARY KEY(id_produit, id_commande),
+   FOREIGN KEY(id_produit) REFERENCES produit(id_produit),
+   FOREIGN KEY(id_commande) REFERENCES commande(id_commande)
 );
