@@ -22,10 +22,10 @@ CREATE TABLE commercial(
    PRIMARY KEY(id_commercial)
 );
 
-CREATE TABLE sous_categorie(
-   id_sous_categorie INT AUTO_INCREMENT NOT NULL,
+CREATE TABLE categorie(
+   id_categorie INT AUTO_INCREMENT NOT NULL,
    nom_categorie VARCHAR(50) ,
-   PRIMARY KEY(id_sous_categorie)
+   PRIMARY KEY(id_categorie)
 );
 
 CREATE TABLE client(
@@ -42,12 +42,12 @@ CREATE TABLE client(
    FOREIGN KEY(id_commercial) REFERENCES commercial(id_commercial)
 );
 
-CREATE TABLE categorie(
-   id_categorie INT AUTO_INCREMENT NOT NULL,
+CREATE TABLE sous_categorie(
+   id_sous_categorie INT AUTO_INCREMENT NOT NULL,
    nom_categorie VARCHAR(50) ,
-   id_sous_categorie INT DEFAULT NULL,
-   PRIMARY KEY(id_categorie),
-   FOREIGN KEY(id_sous_categorie) REFERENCES sous_categorie(id_sous_categorie)
+   id_categorie INT DEFAULT NULL,
+   PRIMARY KEY(id_sous_categorie),
+   FOREIGN KEY(id_categorie) REFERENCES categorie(id_categorie)
 );
 
 CREATE TABLE produit(
@@ -57,10 +57,10 @@ CREATE TABLE produit(
    photo VARCHAR(50) ,
    stock_produit INT,
    libelle_long VARCHAR(1000),
-   id_categorie INT DEFAULT NULL,
+   id_sous_categorie INT DEFAULT NULL,
    id_fournisseur INT DEFAULT NULL,
    PRIMARY KEY(id_produit),
-   FOREIGN KEY(id_categorie) REFERENCES categorie(id_categorie),
+   FOREIGN KEY(id_sous_categorie) REFERENCES sous_categorie(id_sous_categorie),
    FOREIGN KEY(id_fournisseur) REFERENCES fournisseur(id_fournisseur)
 );
 

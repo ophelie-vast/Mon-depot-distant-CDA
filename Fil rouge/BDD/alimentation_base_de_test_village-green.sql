@@ -33,7 +33,7 @@ INSERT INTO `commercial` (`nom_commercial`,
 
 /* Données pour la table Sous_catégorie */
 
-INSERT INTO `sous_categorie` (`id_sous_categorie`, `nom_categorie`) VALUES
+INSERT INTO `categorie` (`id_categorie`, `nom_categorie`) VALUES
 
     (1, 'ACCESSOIRES'),
     (2, 'INSTRUMENTS À VENT'),
@@ -66,7 +66,7 @@ INSERT INTO `client` (`nom_client`,
 
 /* Données pour la table Catégorie */    
 
-INSERT INTO `categorie` (`id_categorie`, `nom_categorie`, `id_sous_categorie`) VALUES
+INSERT INTO `sous_categorie` (`id_sous_categorie`, `nom_categorie`, `id_categorie`) VALUES
 
     (1, 'Microphone', 1),
     (2, 'Différents câbles', 1),
@@ -89,7 +89,7 @@ INSERT INTO `produit` (`nom_produit`,
 `photo`,
 `stock_produit`,
 `libelle_long`,
-`id_categorie`,
+`id_sous_categorie`,
 `id_fournisseur`) VALUES
 
     ('Tambour', 249.99, 'tambour.png', 5, 'Les tambours basses brésiliens vous garantissent une parfaite base rythmiques, 
