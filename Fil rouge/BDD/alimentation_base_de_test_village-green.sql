@@ -31,7 +31,7 @@ INSERT INTO `commercial` (`nom_commercial`,
     ('MOYEN', 'Lisa');
 
 
-/* Données pour la table Sous_catégorie */
+/* Données pour la table CATEGORIE */
 
 INSERT INTO `categorie` (`id_categorie`, `nom_categorie`) VALUES
 
@@ -64,7 +64,7 @@ INSERT INTO `client` (`nom_client`,
     ('VILTARD', 'Maureen', '99 rue de la femme', '34800', 'Octon', '0725418963', 'par', 10);
 
 
-/* Données pour la table Catégorie */    
+/* Données pour la table SOUS_Catégorie */    
 
 INSERT INTO `sous_categorie` (`id_sous_categorie`, `nom_categorie`, `id_categorie`) VALUES
 
@@ -179,7 +179,7 @@ INSERT INTO `produit` (`nom_produit`,
        ('bon de livraison', "2021-11-22", "2021-11-17", 2); 
 
     
-/* Données pour la table contient */
+/* Données pour la table CONTIENT */
 
 INSERT INTO `contient` (`id_produit`,
 `id_livraison`,
@@ -189,7 +189,7 @@ INSERT INTO `contient` (`id_produit`,
     (2,2,1);
 
 
-/* Données pour la table SeComposeDe */
+/* Données pour la table SECOMPOSEDE */
 
 INSERT INTO `secomposede` (`id_produit`,
 `id_commande`,
