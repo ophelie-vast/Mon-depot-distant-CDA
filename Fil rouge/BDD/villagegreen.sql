@@ -44,7 +44,7 @@ CREATE TABLE client(
 
 CREATE TABLE sous_categorie(
    id_sous_categorie INT AUTO_INCREMENT NOT NULL,
-   nom_categorie VARCHAR(50) ,
+   nom_sous_categorie VARCHAR(50) ,
    id_categorie INT DEFAULT NULL,
    PRIMARY KEY(id_sous_categorie),
    FOREIGN KEY(id_categorie) REFERENCES categorie(id_categorie)

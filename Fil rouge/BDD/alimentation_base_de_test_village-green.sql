@@ -11,7 +11,7 @@ INSERT INTO `fournisseur` (`nom_fournisseur`,
     ('HUBAUT', 'Victor', '50 rue Jean Valjean', 'Amiens', '80000', '0610203040'),
     ('JACKSON', 'Mickael', '10 rue du Paradis', 'Gajac', '33430', '0753415896'),
     ('HENRY', 'Ludovic', '20 rue des pleures', 'Galez', '65330', '0690807020'),
-    ('ETIENNE', 'Océane', '560 rue Tiens le Bien', 'Zincourt', '88330', '0365987411');
+    ('LILO', 'Lola', '560 rue Tiens le Bien', 'Zincourt', '88330', '0365987411');
 
 
 /* Données pour la table COMMERCIAL */
@@ -66,7 +66,7 @@ INSERT INTO `client` (`nom_client`,
 
 /* Données pour la table SOUS_Catégorie */    
 
-INSERT INTO `sous_categorie` (`id_sous_categorie`, `nom_categorie`, `id_categorie`) VALUES
+INSERT INTO `sous_categorie` (`id_sous_categorie`, `nom_sous_categorie`, `id_categorie`) VALUES
 
     (1, 'Microphone', 1),
     (2, 'Différents câbles', 1),
