@@ -1,0 +1,126 @@
+/* Pour toutes les pages */
+
+body {
+    background-image:url(images/fond.jpeg);  
+}
+
+#icone {
+    font-size:x-large;
+}
+
+#logo {
+    width: 60%;
+    margin-top: -14px;
+    margin-left: -37px;
+    margin-bottom: -14px;
+}
+
+#banniere {
+    width: 100%;
+}
+
+#fin {
+    width: 100%;
+}
+
+.fondblanc {
+    background-color: white;
+}
+
+.fondgris {
+    background-color: #212529;
+}
+
+.fondnoir {
+    background-color: black;
+}
+
+
+/* Pour la page inscription */
+
+.haut {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.inscription {
+    margin-top: 50px;
+}
+
+.bouton {
+    text-align: center;
+    margin-top: 40px;
+}
+
+
+/* Pour la page connexion */
+
+.haut1 {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.connexion {
+    margin-top: 50px;
+    margin-left: 400px;
+    margin-right: 400px;
+}
+
+.bouton1 {
+    text-align: center;
+    margin-top: 40px;
+}
+
+
+/* Pour la page panier */
+
+.haut2 {
+    margin-top: 20px;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+#piano {
+    width: 20%;
+}
+
+.panier1 {
+    border: 1px solid black;
+}
+
+.image {
+    margin-left: 100px;
+}
+
+#choix {
+    margin-top: 22%;
+}
+
+.prix {
+    font-size: 30px;
+    color:brown;
+    text-align: center;
+    margin-top: 32px;
+}
+
+.total {
+    font-size: 15px;
+    text-align: center;
+    margin-top: 32px;
+}
+
+#tt {
+    font-size: 30px;
+    color:brown;
+    text-align: center;
+    margin-top: 32px;
+}
+
+.ttc {
+    border: 1px solid black;
+}
+
+.valider {
+    text-align: center;
+    margin-top: 40px;
+}
