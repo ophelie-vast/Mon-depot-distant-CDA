@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Sous Catégories {% endblock %}
+
+{% block body %}
+
+<h1> Liste des sous catégories </h1>
+
+    {% for sous_categorie in sous_categories %}
+        <div>
+            {{ sous_categorie.id }}
+            <a href="{{ path("produit", { id1: sous_categorie.id }) }}">
+                {{ sous_categorie.nom }}
+            </a>
+        </div>
+    {% endfor %}
+
+{% endblock %}
