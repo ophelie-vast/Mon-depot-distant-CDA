@@ -1,96 +1,45 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Détails du produit{% endblock %}
+{% block title %}  {% endblock %}
 
 {% block body %}
-
-<style>
-#haut {
-    margin-top:30px;
-}
-
-#nom {
-    text-align: center;
-    border: 1px solid black;
-}
-
-#image {
-    display: block;
-    margin: 0px auto;
-    width: 60%;
-}
-
-.descriptif {
-    font-size: 20px;
-}
-
-.prix {
-    font-size: 60px;
-    color:brown;
-    font-weight: bold;
-    text-align: right;
-}
-
-.valider{
-    text-decoration: none;
-}
-
-#bouton {
-    display: block;
-    margin: 0px auto;
-    font-size: 130%;
-}
-
-#ariane {
-    margin-top:20px;
-}
-
-a {
-    color: white;
-}
-
-.crumb li {
-    display: inline-block;
-    padding: 5px;
-    background: rgb(10, 10, 10);
-    cursor: pointer;
-    opacity: 0.8;
-}
-</style>
 
 <div class="row" id="ariane">
     <ul class="crumb">
         <li style="border-radius: 50px 0 0 50px; padding-left: 15px;"><a href="/">Accueil</a></li>
-        <li><a href="">Sous catégorie</a></li>
+        <li><a href="{{ path('souscategorie', {id : descriptif.sousCategorie.categorie.id}) }}">
+            {{ descriptif.sousCategorie.categorie.nom}}</a></li>
         <li style="border-radius: 0 50px 50px 0; padding-right: 15px;">
-            <a href="">Liste des produits</a>
+            <a href="{{ path('produit', {id : descriptif.sousCategorie.id}) }}">
+                {{ descriptif.sousCategorie.nom}}
+            </a>
         </li>
     </ul>
 </div>
 
 <div class="row">
-    {% for row in details %}
-        <div class="col-12" id="nom">
-            <H2>{{ row.nom }}</H2>
-        </div>
-<br>
+
+    <h1 id="titre">{{ descriptif.nom }}</h1>
+
+    
         <div class="row" id="haut">
             <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
-                <img class="img-fluid" src="/assets/images/produits/{{ row.photo }}" alt="{{ row.nom }}" id="image">
+                <img class="img-fluid" src="/assets/images/produits/{{ descriptif.photo }}" alt="{{ descriptif.nom }}" id="image-detail">
             </div>
 
             <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
                 <ul class="descriptif">
-                    {{ row.descriptif }}
+                    {{ descriptif.descriptif | nl2br }}
                 </ul>
-<hr>
-                <p class="prix"> {{ row.prixachat }} &euro;</p>
+                    <hr>
+                <p class="prix-detail"> {{ descriptif.prixachat }} &euro;</p>
                 
-                <button type="button" class="btn btn-dark" id="bouton"><a class="valider" href="#">Ajouter au panier</a></button>
+                <button type="button" class="btn btn-dark" id="bouton">
+                    <a class="valider" href="{{ path('add', {id: descriptif.id}) }}">Ajouter au panier</a>
+                </button>
                 
             </div>
-        </div>
-    {% endfor %}   
+        </div>  
 </div>     
 
 {% endblock %}

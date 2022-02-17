@@ -1,34 +1,10 @@
 {% extends 'base.html.twig' %}
 
-{% block title %} Accueil, Village Green {% endblock %}
+{% block title %} Accueil {% endblock %}
 
 {% block body %}
-    <style>
 
-        #pub1 {
-            width: 100%;
-            float: center;
-        }
-
-        #pub2 {
-            width: 78.5%;
-            display: block;
-            margin: 0px auto;
-        }
-
-        @media screen and (max-width: 992px)
-        {     /* enleve la pub selon écran */
-            #pub2
-            {
-                display: none;
-            }
-        }
-    </style>
-
-    <br>
-
-    {# {{ dump(listes)}} #}
-
+<br>
     <div class="row">
 
         {% for row in listes %}

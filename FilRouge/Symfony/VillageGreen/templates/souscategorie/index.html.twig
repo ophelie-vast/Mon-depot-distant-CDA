@@ -1,63 +1,23 @@
 {% extends 'base.html.twig' %}
 
-{% block title %} Sous Catégories {% endblock %}
+{% block title %} {{ (sous_categories|first).categorie.nom }} {% endblock %}
 
 {% block body %}
 
-<style>
-#titre1 {
-    text-align: center;
-    color: rgb(160, 56, 56);
-    border: 1px solid black;
-}
-
-#titre {
-    text-align: center;
-    color:black;
-    margin-top:30px;
-    margin-bottom:30px;
-}
-
-#centre {
-    text-align: center;
-}
-
-.img-fluid {
-    width:50%;
-}
-
-/* Pour le fil d'ariane */
-#ariane {
-    margin-top:20px;
-}
-
-a {
-    color: white;
-}
-
-.crumb li {
-    display: inline-block;
-    padding: 5px;
-    background: rgb(10, 10, 10);
-    cursor: pointer;
-    opacity: 0.8;
-}
-</style>
-
 <div class="row" id="ariane">
-                <ul class="crumb">
-                    <li><a href="/">Accueil</a></li>
-                  </ul>
-            </div>
+    <ul class="crumb">
+        <li><a href="/">Accueil</a></li>
+    </ul>
+</div>
 
-<h1 id="titre1"> Liste des sous catégories </h1>
+<h1 id="titre"> {{ (sous_categories|first).categorie.nom }} </h1>
 
 <div class="row">
     {% for row in sous_categories %}
         <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6" id="centre">
-            <H4 id="titre">{{ row.nom }}</H4>
+            <H4 id="souscat">{{ row.nom }}</H4>
             <a class="nav-link" href="{{ path('produit', {id : row.id}) }}">
-                <img class="img-fluid" src="/assets/images/souscategories/{{ row.photo }}" alt="{{ row.nom }}">
+                <img class="img-fluid image-sous-categorie" src="/assets/images/souscategories/{{ row.photo }}" alt="{{ row.nom }}">
             </a> 
         </div>
     {% endfor %}

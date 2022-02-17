@@ -1,0 +1,71 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Panier{% endblock %}
+
+{% block body %}
+
+<div class="row" id="ariane">
+    <ul class="crumb">
+        <li><a href="javascript:history.go(-1)">Retour</a></li>
+    </ul>
+</div>
+
+<h1 id="titre"> Votre panier</h1>
+<br><br>
+<div class="row">
+    <table class="table">
+        <thead>
+            <tr id="nom-panier">
+                <th>Photo</th>
+                <th>Produit</th>
+                <th>Prix</th>
+                <th>Quantité</th>
+                <th>Total</th>
+                <th></th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for ligne in lignes %}
+            <tr>
+                <td>
+                    <img class="img-fluid" src="/assets/images/produits/{{ ligne.produit.photo }}"
+                        alt="{{ ligne.produit.nom }}" id="image-panier">
+                </td>
+                <td>{{ ligne.produit.nom }}</td>
+                <td>{{ ligne.produit.prixachat }} &euro;</td>
+                <td>{{ ligne.quantite }}</td>
+                <td>{{ ligne.quantite * ligne.produit.prixachat }} &euro;</td>
+                <td>
+                    <a href="{{ path('add', {id: ligne.produit.id}) }}" class="btn btn-success">
+                        <i>+1</i>
+                    </a>
+                    <a href="{{ path('remove', {id: ligne.produit.id}) }}" class="btn btn-primary">
+                        <i>-1</i>
+                    </a>
+                    <a href="{{ path('delete', {id: ligne.produit.id}) }}" class="btn btn-danger">
+                        <i class="bi bi-trash">P</i>
+                    </a>
+                </td>
+            </tr>
+
+            {% else %}
+            <tr>
+                <td colspan="5" class="text-center" id="vide">Votre panier est vide</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+
+        <tfoot>
+            <tr>
+                <td colspan="3"></td>
+                <td>Total : {{ total }} &euro;</td>
+            </tr>
+        </tfoot>
+    </table>
+</div>
+
+<button type="button" class="btn btn-dark" id="bouton">
+    <a class="valider" href="#">Valider</a>
+</button>
+{% endblock %}

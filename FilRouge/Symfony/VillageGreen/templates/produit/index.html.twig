@@ -1,79 +1,38 @@
 {% extends 'base.html.twig' %}
 
-{% block title %} Produits {% endblock %}
+{% block title %} {{ (produits|first).sousCategorie.nom }} {% endblock %}
 
 {% block body %}
 
-<style>
-#haut {
-    margin-top:30px;
-    margin-bottom:30px;
-}
+<div class="row" id="ariane">
+    <ul class="crumb">
+        <li style="border-radius: 50px 0 0 50px; padding-left: 15px;">
+            <a href="/">Accueil</a>
+        </li>
+        <li style="border-radius: 0 50px 50px 0; padding-right: 15px;">
+            <a href="{{ path('souscategorie', {id : (produits|first).sousCategorie.categorie.id}) }}">
+            {{ (produits|first).sousCategorie.categorie.nom }}</a>
+        </li>
+     </ul>
+</div>
 
-#titre {
-    text-align: center;
-    color: rgb(160, 56, 56);
-    border: 1px solid black;
-}
-
-#image {
-    width: 50%;
-    display: block;
-    margin: 0px auto;
-}
-
-.nom {
-    font-size:30px;
-    text-align: center;
-    margin-top: 80px;
-}
-
-.prix {
-    font-size:40px;
-    text-align: center;
-    margin-top: 82px;
-    color: brown;
-    font-weight: bold;
-}
-
-/* Pour le fil d'ariane */
-#ariane {
-    margin-top:20px;
-}
-
-a {
-    color: white;
-}
-
-.crumb li {
-    display: inline-block;
-    padding: 5px;
-    background: rgb(10, 10, 10);
-    cursor: pointer;
-    opacity: 0.8;
-}
-</style>
-
- <div class="row" id="ariane">
-                <ul class="crumb">
-                    <li style="border-radius: 50px 0 0 50px; padding-left: 15px;"><a href="/">Accueil</a></li>
-                    <li style="border-radius: 0 50px 50px 0; padding-right: 15px;"><a href="{{ path('souscategorie', {id : (produits|first).sousCategorie.categorie.id}) }}">Sous catégories</a></li>
-                  </ul>
-            </div>
-
-<h1 id="titre"> Liste des produits </h1>
+<h1 id="titre">{{ (produits|first).sousCategorie.nom }}</h1>
 <div class="row">
     
-        {% for row in produits %}
+    {% for row in produits %}
 
-            <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4" id="haut"><a class="nav-link" href="{{ path('details', {id : row.id}) }}">
-                <img class="img-fluid" src="/assets/images/produits/{{ row.photo }}" alt="{{ row.nom }}" id="image"></a>
-            </div>
-            <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 mx-auto"><p class="nom">{{ row.nom }}</p></div>
-            <div class="col-12 col-sm-12 col-md-12 col-lg-2 col-xl-2"><p class="prix">{{ row.prixachat }} &euro;</p></div>
+        <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4" id="haut"><a class="nav-link" href="{{ path('details', {id : row.id}) }}">
+            <img class="img-fluid" src="/assets/images/produits/{{ row.photo }}" alt="{{ row.nom }}" id="image-produit"></a>
+        </div>
+        <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 mx-auto">
+            <p class="nom">{{ row.nom }}</p>
+        </div>
 
-        {% endfor %}
-    
+        <div class="col-12 col-sm-12 col-md-12 col-lg-2 col-xl-2">
+            <p class="prix-produit">{{ row.prixachat }} &euro;</p>
+        </div>
+            <hr>
+    {% endfor %}   
 </div>    
 
 {% endblock %}

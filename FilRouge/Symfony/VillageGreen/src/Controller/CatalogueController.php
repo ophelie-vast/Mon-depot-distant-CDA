@@ -3,7 +3,6 @@
 namespace App\Controller;
 
 use App\Repository\CategorieRepository;
-use App\Repository\DetailRepository;
 use App\Repository\ProduitRepository;
 use App\Repository\SousCategorieRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -13,7 +12,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class CatalogueController extends AbstractController
 {
-  
+
     /**
      * @Route("/", name="categorie")
      */
@@ -31,7 +30,7 @@ class CatalogueController extends AbstractController
      */
     public function sous_categorie_liste(SousCategorieRepository $repo, $id): Response
     {
-        $categorie = $repo->findBy(['categorie'=>$id]);
+        $categorie = $repo->findBy(['categorie' => $id]);
 
         return $this->render('souscategorie/index.html.twig', [
             'sous_categories' => $categorie,
@@ -43,7 +42,7 @@ class CatalogueController extends AbstractController
      */
     public function produit_liste(ProduitRepository $repo, $id): Response
     {
-        $souscategorie = $repo->findBy(['sousCategorie'=>$id]);
+        $souscategorie = $repo->findBy(['sousCategorie' => $id]);
 
         return $this->render('produit/index.html.twig', [
             'produits' => $souscategorie,
@@ -55,10 +54,10 @@ class CatalogueController extends AbstractController
      */
     public function produit_details(ProduitRepository $repo, $id): Response
     {
-        $description = $repo->findBy(['id'=>$id]);
+        $description = $repo->find($id);
 
         return $this->render('detail/index.html.twig', [
-            'details' => $description,
+            'descriptif' => $description,
         ]);
     }
 }
