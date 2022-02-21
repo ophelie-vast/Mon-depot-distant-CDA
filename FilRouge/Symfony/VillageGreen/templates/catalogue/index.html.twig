@@ -2,4 +2,32 @@
 
 {% block body %}
 
+<div class="row" id="ariane">
+    <ul class="crumb">
+        <li><a href="{{ path('categorie') }}">Accueil</a></li>
+    </ul>
+</div>
+
+<div class="row">
+    {% for row in tous_produits %}
+
+    <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4" id="haut">
+        <a href="{{ path('details', {id : row.id}) }}">
+            <img class="img-fluid" src="/assets/images/produits/{{ row.photo }}" alt="{{ row.nom }}" id="image-produit">
+        </a>
+    </div>
+    <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 mx-auto">
+        <p class="nom">{{ row.nom }}</p>
+    </div>
+
+    <div class="col-12 col-sm-12 col-md-12 col-lg-2 col-xl-2">
+        <p class="prix-produit">{{ row.prixachat }} &euro;</p>
+        <button type="button" class="btn btn-info btn-sm" id="bouton">
+            <a class="valider" href="{{ path('details', {id : row.id}) }}">Détail du produit</a>
+        </button>
+    </div>
+    <hr>
+    {% endfor %}
+</div>
+
 {% endblock %}

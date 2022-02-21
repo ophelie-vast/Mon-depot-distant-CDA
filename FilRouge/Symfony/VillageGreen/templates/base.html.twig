@@ -34,7 +34,8 @@
                         <div class="collapse navbar-collapse" id="navbarSupportedContent">
                             <ul class="navbar-nav me-auto mb-2 mb-lg-0" id="icone">
                                 <li class="nav-item">
-                                    <a class="nav-link active" aria-current="page" href="#">Nos produits</a>
+                                    <a class="nav-link active" aria-current="page"
+                                        href="{{ path('tous_les_produits')}}">Nos produits</a>
                                 </li>
                                 <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown"
@@ -59,15 +60,27 @@
                                         Espace client
                                     </a>
                                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <li><a class="dropdown-item" href="#">Identifiez-vous</a></li>
-                                        <li><a class="dropdown-item" href="#">Créer un compte</a></li>
+                                        <li>
+                                            <a class="dropdown-item" href="{{ path('app_login') }}">Identifiez-vous</a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" href="{{ path('app_register') }}">
+                                                Créer un compte
+                                            </a>
+                                        </li>
                                     </ul>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link active" aria-current="page" href="{{ path('panier') }}">
                                         <img class="img-fluid" src="{{ absolute_url('/assets/images/panier.svg')}}"
                                             alt="panier" id="panier">
-                                        {{ app.session.get("panier") | length }}
+                                        {% if app.session.get('panier') %}
+                                        {% set TotalPanier =0 %}
+                                        {% for key,cpte in app.session.get('panier') %}
+                                        {% set TotalPanier = TotalPanier + app.session.get('panier')[key] %}
+                                        {% endfor %}
+                                        {{ TotalPanier }}
+                                        {% endif %}
                                     </a>
                                 </li>
                             </ul>

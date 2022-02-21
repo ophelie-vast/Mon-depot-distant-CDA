@@ -165,3 +165,30 @@ a {
 #vide {
     font-size: 200%;
 }
+
+#total {
+    color:rgb(174, 70, 70);
+    font-weight: bolder;
+}
+
+
+/* Pour la page connexion */
+.haut-connexion {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.connexion {
+    margin-top: 50px;
+    margin-left: 400px;
+    margin-right: 400px;
+}
+
+.bouton-connexion {
+    text-align: center;
+    margin-top: 40px;
+}
+
+#connecte {
+    color : red;
+}

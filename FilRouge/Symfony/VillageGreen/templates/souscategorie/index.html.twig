@@ -6,7 +6,7 @@
 
 <div class="row" id="ariane">
     <ul class="crumb">
-        <li><a href="/">Accueil</a></li>
+        <li><a href="{{ path('categorie') }}">Accueil</a></li>
     </ul>
 </div>
 
@@ -14,12 +14,13 @@
 
 <div class="row">
     {% for row in sous_categories %}
-        <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6" id="centre">
-            <H4 id="souscat">{{ row.nom }}</H4>
-            <a class="nav-link" href="{{ path('produit', {id : row.id}) }}">
-                <img class="img-fluid image-sous-categorie" src="/assets/images/souscategories/{{ row.photo }}" alt="{{ row.nom }}">
-            </a> 
-        </div>
+    <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6" id="centre">
+        <H4 id="souscat">{{ row.nom }}</H4>
+        <a class="nav-link" href="{{ path('produit', {id : row.id}) }}">
+            <img class="img-fluid image-sous-categorie" src="/assets/images/souscategories/{{ row.photo }}"
+                alt="{{ row.nom }}">
+        </a>
+    </div>
     {% endfor %}
 </div>
 

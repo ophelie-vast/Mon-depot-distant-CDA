@@ -38,7 +38,7 @@ class Produit
     private $stock;
 
     /**
-     * @ORM\Column(type="string", length=1000)
+     * @ORM\Column(type="text", length=6555)
      */
     private $descriptif;
 
