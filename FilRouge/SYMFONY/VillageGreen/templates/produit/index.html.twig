@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} {{ (produits|first).sousCategorie.nom }} {% endblock %}
+
+{% block body %}
+
+<div class="row" id="ariane">
+    <ul class="crumb">
+        <li style="border-radius: 50px 0 0 50px; padding-left: 15px;">
+            <a href="{{ path('categorie') }}">Accueil</a>
+        </li>
+        <li style="border-radius: 0 50px 50px 0; padding-right: 15px;">
+            <a href="{{ path('souscategorie', {id : (produits|first).sousCategorie.categorie.id}) }}">
+                {{ (produits|first).sousCategorie.categorie.nom }}</a>
+        </li>
+    </ul>
+</div>
+
+<h1 id="titre">{{ (produits|first).sousCategorie.nom }}</h1>
+<div class="row">
+
+    {% for row in produits %}
+
+    <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4" id="haut">
+        <a href="{{ path('details', {id : row.id}) }}">
+            <img class="img-fluid" src="/assets/images/produits/{{ row.photo }}" alt="{{ row.nom }}" id="image-produit">
+        </a>
+    </div>
+    <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 mx-auto">
+        <p class="nom">{{ row.nom }}</p>
+    </div>
+
+    <div class="col-12 col-sm-12 col-md-12 col-lg-2 col-xl-2">
+        <p class="prix-produit">{{ row.prixachat }} &euro;</p>
+        <button type="button" class="btn btn-info btn-sm" id="bouton">
+            <a class="valider" href="{{ path('details', {id : row.id}) }}">Détail du produit</a>
+        </button>
+    </div>
+    <hr>
+    {% endfor %}
+</div>
+
+{% endblock %}

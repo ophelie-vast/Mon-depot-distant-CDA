@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Accueil {% endblock %}
+
+{% block body %}
+
+<br>
+    <div class="row">
+
+        {% for row in listes %}
+            <div class="col-6 col-sm-6 col-md-4 col-lg-2 col-xl-2"><a class="nav-link" href="{{ path('souscategorie', {id : row.id}) }}">
+                    <img class="img-fluid" src="/assets/images/{{ row.photo }}" alt="{{ row.nom }}"></a> </div>
+        {% endfor %}
+
+    </div>
+
+    <br>
+
+    <div class="row">
+        <div class="col-sm-12 col-md-12 col-lg-9 col-xl-9">
+            <img class="img-fluid" src="{{ absolute_url('/assets/images/pub guitare.png') }}" alt="pub1" id="pub1">
+        </div>
+
+        <div class="col-sm-12 col-md-12 col-lg-3 col-xl-3">
+            <img class="img-fluid" src="{{ absolute_url('/assets/images/banniere droite prix.png') }}" alt="pub2" id="pub2">
+        </div>
+    </div>
+
+{% endblock %}
