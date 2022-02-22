@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Coordonnées bancaires {% endblock %}
+
+{% block body %}
+
+<h1 id="titre1"> Coordonnées bancaires </h1>
+
+<p>
+    ici je dois mettre un formulaire pour le client entre ses coordonnées bancaires
+</p>
+
+<button type="button" class="btn btn-warning">
+    <a class="valider" href="{{ path('validation_commande') }}">valider ma commande</a>
+</button>
+
+{% endblock %}

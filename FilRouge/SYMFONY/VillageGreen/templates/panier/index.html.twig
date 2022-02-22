@@ -6,12 +6,7 @@
 
 <div class="row" id="ariane">
     <ul class="crumb">
-        <li style="border-radius: 50px 0 0 50px; padding-left: 15px;">
-            <a href="{{ path('categorie') }}">Accueil</a>
-        </li>
-        <li style="border-radius: 0 50px 50px 0; padding-right: 15px;">
-            <a href="javascript:history.go(-1)">Retour</a>
-        </li>
+        <li><a href="{{ path('categorie') }}">Accueil</a></li>
     </ul>
 </div>
 
@@ -21,11 +16,11 @@
     <table class="table">
         <thead>
             <tr id="nom-panier">
-                <th>PHOTO</th>
+                <th></th>
                 <th>PRODUIT</th>
-                <th>PRIX</th>
-                <th>QUANTITÉ</th>
-                <th>TTC</th>
+                <th>PRIX UNITAIRE</th>
+                <th>QTÉ</th>
+                <th>TOTAL</th>
                 <th></th>
             </tr>
         </thead>
@@ -34,8 +29,10 @@
             {% for ligne in lignes %}
             <tr>
                 <td>
-                    <img class="img-fluid" src="/assets/images/produits/{{ ligne.produit.photo }}"
-                        alt="{{ ligne.produit.nom }}" id="image-panier">
+                    <a href="{{ path('details', {id : ligne.produit.id}) }}">
+                        <img class="img-fluid" src="/assets/images/produits/{{ ligne.produit.photo }}"
+                            alt="{{ ligne.produit.nom }}" id="image-panier">
+                    </a>
                 </td>
                 <td>{{ ligne.produit.nom }}</td>
                 <td>{{ ligne.produit.prixachat }} &euro;</td>
@@ -78,17 +75,21 @@
             </tr>
             {% endfor %}
         </tbody>
-
-        <tfoot>
-            <tr>
-                <td colspan="3"></td>
-                <td id="total">Total : {{ total }} &euro;</td>
-            </tr>
-        </tfoot>
     </table>
 </div>
 
+{% if lignes %}
+
+<div class="col-12" id="total" style="text-align:center;">
+    <h5>Total :</h5> {{ total }} &euro; TTC
+</div>
+
+<br>
+
 <button type="button" class="btn btn-dark" id="bouton">
-    <a class="valider" href="#">Valider mon panier</a>
+    <a class="valider" href="{{ path('informations_client') }}">Valider mon panier</a>
 </button>
+
+{% endif %}
+
 {% endblock %}

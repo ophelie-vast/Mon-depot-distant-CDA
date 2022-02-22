@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Informations personnelles {% endblock %}
+
+{% block body %}
+
+<h1 id="titre1"> Informations personnelles</h1>
+
+<p>
+    ici je dois mettre un formulaire pour le client entre ses infos perso (adresse etc)
+</p>
+
+<button type="button" class="btn btn-warning">
+    <a class="valider" href="{{ path('coordonnees_bancaires') }}">passer au paiement</a>
+</button>
+{% endblock %}
