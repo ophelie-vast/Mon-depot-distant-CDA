@@ -47,6 +47,11 @@ class Produit
      */
     private $sousCategorie;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=DetailCommande::class, inversedBy="produits")
+     */
+    private $detail_commande;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -120,6 +125,18 @@ class Produit
     public function setSousCategorie(?SousCategorie $sousCategorie): self
     {
         $this->sousCategorie = $sousCategorie;
+
+        return $this;
+    }
+
+    public function getDetailCommande(): ?DetailCommande
+    {
+        return $this->detail_commande;
+    }
+
+    public function setDetailCommande(?DetailCommande $detail_commande): self
+    {
+        $this->detail_commande = $detail_commande;
 
         return $this;
     }

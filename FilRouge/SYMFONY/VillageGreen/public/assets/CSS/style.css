@@ -207,3 +207,22 @@ a {
 #id {
     margin-top: 10px;
 }
+
+/* Pour la page informations personnelles */
+
+#infos {
+    margin-top: 50px;
+    margin-left: 200px;
+    margin-right: 200px;
+}
+
+
+#infos-client {
+    margin-top: 50px;
+}
+
+.adresse {
+    text-align: center;
+    color: blue;
+    font-size: 20px;
+}

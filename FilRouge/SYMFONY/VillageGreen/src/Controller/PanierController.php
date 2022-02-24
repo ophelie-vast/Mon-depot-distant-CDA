@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Produit;
+use App\Repository\ClientRepository;
 use App\Repository\ProduitRepository;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -49,6 +50,7 @@ class PanierController extends AbstractController
      */
     public function add(SessionInterface $session, Produit $produit): Response
     {
+        // On récupère le panier actuel
         $panier = $session->get("panier", []);
         $id = $produit->getId();
 
@@ -58,6 +60,7 @@ class PanierController extends AbstractController
             $panier[$id] = 1;
         }
 
+        // On sauvegarde dans la session
         $session->set("panier", $panier);
 
         return $this->redirectToRoute("panier");
@@ -103,5 +106,27 @@ class PanierController extends AbstractController
         $session->set("panier", $panier);
 
         return $this->redirectToRoute("panier");
+    }
+
+    /**
+     * @Route("/informations/client", name="informations_client")
+     */
+    public function infos_client(ClientRepository $client): Response
+    {
+        if (!$this->getUser()) {
+            $this->addFlash('connexion', 'Veuillez vous connecter');
+            return $this->redirectToRoute('app_login');
+        } else {
+            if (!$client->findOneBy(['users' => $this->getUser()])) {
+                $this->addFlash('error_profil', 'Veuillez entrer vos informations');
+                return $this->redirectToRoute('profil_client');
+            }
+        }
+
+        dump($this->getUser());
+
+        return $this->render('informations_client/index.html.twig', [
+            'profil' => $client->findOneBy(['users' => $this->getUser()]),
+        ]);
     }
 }

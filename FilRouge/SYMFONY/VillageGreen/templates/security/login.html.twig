@@ -27,8 +27,16 @@
 
     <h1 id="titre"> Connectez-vous </h1>
 
+    <div class="row">
+        <a href="{{ path('app_register') }}" class="text-primary text-center">Pas encore de compte? Inscrivez-vous</a>
+    </div>
+
     <div class="row connexion">
         <div class="col-12">
+
+            {% for flash_error in app.flashes('connexion') %}
+            <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
+            {% endfor %}
 
             <label for="inputEmail">Email :</label>
             <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control"

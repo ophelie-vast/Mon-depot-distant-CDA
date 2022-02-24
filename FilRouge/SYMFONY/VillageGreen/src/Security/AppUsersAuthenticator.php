@@ -49,6 +49,16 @@ class AppUsersAuthenticator extends AbstractLoginFormAuthenticator
             return new RedirectResponse($targetPath);
         }
 
+        // $route = $request->headers->get('referer');
+        // $explore = explode('/', $route);
+        // // return $this->redirect($route);
+        // dump($explore);
+        // if ($explore[3] == 'panier') {
+        //     dump($explore[3]);
+        //     return new RedirectResponse($this->urlGenerator->generate($explore[3]));
+        //     // return $this->redirectToRoute('informations_client');
+        // }
+
         // For example:
         return new RedirectResponse($this->urlGenerator->generate('categorie'));
         //throw new \Exception('TODO: provide a valid redirect inside '.__FILE__);

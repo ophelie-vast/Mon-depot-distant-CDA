@@ -4,13 +4,62 @@
 
 {% block body %}
 
-<h1 id="titre1"> Informations personnelles</h1>
+<div class="row" id="ariane">
+    <ul class="crumb">
+        <li><a href="{{ path('categorie') }}">Accueil</a></li>
+    </ul>
+</div>
 
-<p>
-    ici je dois mettre un formulaire pour le client entre ses infos perso (adresse etc)
-</p>
+<h1 id="titre"> Votre profil </h1>
 
-<button type="button" class="btn btn-warning">
-    <a class="valider" href="{{ path('coordonnees_bancaires') }}">passer au paiement</a>
-</button>
+<div class="row">
+    <div class="col-6" id="infos-client">
+        <p class="adresse">Adresse de facturation</p>
+
+        <input class="form-control" type="text" placeholder="{{ profil.nom }}" aria-label="Disabled input example"
+            disabled>
+        <input class="form-control" type="text" placeholder="{{ profil.prenom }}" aria-label="Disabled input example"
+            disabled>
+        <input class="form-control" type="text" placeholder="{{ profil.adresse }}" aria-label="Disabled input example"
+            disabled>
+        <input class="form-control" type="text" placeholder="{{ profil.ville }}" aria-label="Disabled input example"
+            disabled>
+        <input class="form-control" type="text" placeholder="{{ profil.cp }}" aria-label="Disabled input example"
+            disabled>
+        <input class="form-control" type="text" placeholder="{{ profil.telephone }}" aria-label="Disabled input example"
+            disabled>
+        <input class="form-control" type="text" placeholder="{{ profil.type }}" aria-label="Disabled input example"
+            disabled>
+    </div>
+
+
+    <div class="col-6" id="infos-client">
+        <p class="adresse">Adresse de livraison</p>
+        
+        <input class="form-control" type="text" placeholder="" aria-label="Disabled input example" disabled>
+        <input class="form-control" type="text" placeholder="" aria-label="Disabled input example" disabled>
+        <input class="form-control" type="text" placeholder="" aria-label="Disabled input example" disabled>
+        <input class="form-control" type="text" placeholder="" aria-label="Disabled input example" disabled>
+        <input class="form-control" type="text" placeholder="" aria-label="Disabled input example" disabled>
+        <input class="form-control" type="text" placeholder="" aria-label="Disabled input example" disabled>
+        <input class="form-control" type="text" placeholder="" aria-label="Disabled input example" disabled>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-12 bouton-connexion">
+
+        <button type="submit" class="btn btn-danger">
+            <a class="valider" href="{{ path('profil_client') }}">
+                Modifier mes informations
+            </a>
+        </button>
+
+        <button type="submit" class="btn btn-warning">
+            <a class="valider" href="{{ path('coordonnees_bancaires') }}">
+                Valider mes informations et passer au paiement
+            </a>
+        </button>
+    </div>
+</div>
 {% endblock %}

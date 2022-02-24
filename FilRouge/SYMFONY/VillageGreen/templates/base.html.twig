@@ -92,9 +92,7 @@
             {% if app.user %}
             <div style="text-align:right;" id="id">
                 Vous êtes connecté avec cet identifiant : {{ app.user.username }}
-                <button type="button" class="btn btn-dark btn-sm">
-                    <a href="{{ path('app_logout') }}">Déconnexion</a>
-                </button>
+                <a href="{{ path('app_logout') }}" class="text-danger">Déconnexion</a>
             </div>
             {% endif %}
         </div>
