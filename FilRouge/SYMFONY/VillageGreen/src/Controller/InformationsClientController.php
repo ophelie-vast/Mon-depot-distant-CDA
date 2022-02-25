@@ -53,14 +53,15 @@ class InformationsClientController extends AbstractController
             $profil->setTelephone($telephone);
             $profil->setType($type);
 
+            $profil->setUsers($this->getUser());
+
             if (!$client->findOneBy(['users' => $this->getUser()])) {
 
-                $profil->setUsers($this->getUser());
+
                 $manager->persist($profil);
             }
+            $manager->flush();
         }
-
-        $manager->flush();
         return $this->redirectToRoute('informations_client');
     }
 }

@@ -50,7 +50,7 @@ class Client
     private $telephone;
 
     /**
-     * @ORM\Column(type="boolean")
+     * @ORM\Column(type="string", length=10)
      */
     private $type;
 
@@ -61,6 +61,7 @@ class Client
 
     /**
      * @ORM\OneToOne(targetEntity=User::class, cascade={"persist", "remove"})
+     * @ORM\JoinColumn(nullable=false)
      */
     private $users;
 
@@ -146,12 +147,12 @@ class Client
         return $this;
     }
 
-    public function getType(): ?bool
+    public function getType(): ?string
     {
         return $this->type;
     }
 
-    public function setType(bool $type): self
+    public function setType(string $type): self
     {
         $this->type = $type;
 

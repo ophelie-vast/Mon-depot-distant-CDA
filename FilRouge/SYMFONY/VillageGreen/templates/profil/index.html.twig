@@ -10,6 +10,29 @@
     </ul>
 </div>
 
+{% set nom = '' %}
+{% set prenom = '' %}
+{% set adresse = '' %}
+{% set ville = '' %}
+{% set cp = '' %}
+{% set telephone = '' %}
+{% set type = '' %}
+
+{% if profil %}
+
+{% set nom = profil.nom %}
+{% set prenom = profil.prenom %}
+{% set adresse = profil.adresse %}
+{% set ville = profil.ville %}
+{% set cp = profil.cp %}
+{% set telephone = profil.telephone %}
+{% set type = profil.type %}
+
+{% endif %}
+
+
+
+
 <form method="post" action="{{ path('post_client') }}">
 
     <h1 id="titre"> Entrez vos informations personnelles </h1>
@@ -48,11 +71,11 @@
             <br>
             <label for="sexe">Vous êtes :</label> <br>
             <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="type" id="type" value="0">
+                <input class="form-check-input" type="radio" name="type" id="type" value="par">
                 <label class="form-check-label" for="radio1">Un particulier</label>
             </div>
             <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="type" id="type" value="1">
+                <input class="form-check-input" type="radio" name="type" id="type" value="pro">
                 <label class="form-check-label" for="radio2">Un professionnel</label>
             </div>
             <br><br>
@@ -80,10 +103,8 @@
 
     <div class="row">
         <div class="col-12 bouton-connexion">
-            <button type="submit" class="btn btn-warning">
-                <a class="valider" href="{{ path('coordonnees_bancaires') }}">
-                    Valider mes informations et passer au paiement
-                </a>
+            <button type="submit" class="btn btn-dark">
+                Valider mes informations et passer ma commande
             </button>
         </div>
     </div>

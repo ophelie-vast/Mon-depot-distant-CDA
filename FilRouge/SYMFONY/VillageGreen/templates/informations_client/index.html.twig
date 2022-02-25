@@ -35,14 +35,21 @@
 
     <div class="col-6" id="infos-client">
         <p class="adresse">Adresse de livraison</p>
-        
-        <input class="form-control" type="text" placeholder="" aria-label="Disabled input example" disabled>
-        <input class="form-control" type="text" placeholder="" aria-label="Disabled input example" disabled>
-        <input class="form-control" type="text" placeholder="" aria-label="Disabled input example" disabled>
-        <input class="form-control" type="text" placeholder="" aria-label="Disabled input example" disabled>
-        <input class="form-control" type="text" placeholder="" aria-label="Disabled input example" disabled>
-        <input class="form-control" type="text" placeholder="" aria-label="Disabled input example" disabled>
-        <input class="form-control" type="text" placeholder="" aria-label="Disabled input example" disabled>
+
+        <input class="form-control" type="text" placeholder="{{ profil.nom }}" aria-label="Disabled input example"
+            disabled>
+        <input class="form-control" type="text" placeholder="{{ profil.prenom }}" aria-label="Disabled input example"
+            disabled>
+        <input class="form-control" type="text" placeholder="{{ profil.adresse }}" aria-label="Disabled input example"
+            disabled>
+        <input class="form-control" type="text" placeholder="{{ profil.ville }}" aria-label="Disabled input example"
+            disabled>
+        <input class="form-control" type="text" placeholder="{{ profil.cp }}" aria-label="Disabled input example"
+            disabled>
+        <input class="form-control" type="text" placeholder="{{ profil.telephone }}" aria-label="Disabled input example"
+            disabled>
+        <input class="form-control" type="text" placeholder="{{ profil.type }}" aria-label="Disabled input example"
+            disabled>
     </div>
 </div>
 
@@ -55,9 +62,9 @@
             </a>
         </button>
 
-        <button type="submit" class="btn btn-warning">
-            <a class="valider" href="{{ path('coordonnees_bancaires') }}">
-                Valider mes informations et passer au paiement
+        <button type="submit" class="btn btn-dark">
+            <a class="valider" href="{{ path('validation_commande') }}">
+                Valider mes informations et passer ma commande
             </a>
         </button>
     </div>
