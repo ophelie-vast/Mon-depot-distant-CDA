@@ -2,13 +2,13 @@
 
 namespace App\Entity;
 
-use App\Repository\CommercialRepository;
+use App\Repository\EmployeRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass=CommercialRepository::class)
+ * @ORM\Entity(repositoryClass=EmployeRepository::class)
  */
-class Commercial
+class Employe
 {
     /**
      * @ORM\Id

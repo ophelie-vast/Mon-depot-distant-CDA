@@ -226,3 +226,24 @@ a {
     color: rgb(51, 155, 54);
     font-size: 20px;
 }
+
+/* Pour la page validation */
+
+#felicitations {
+    margin-top: 70px;
+}
+
+#felicitations-image {
+    width: 100%;
+    float: center;
+}
+
+.message {
+    font-size:20px;
+    color: rgb(155, 51, 134);
+}
+
+#bouton-valide {
+    text-align: right;
+    margin-top: 70px;
+}

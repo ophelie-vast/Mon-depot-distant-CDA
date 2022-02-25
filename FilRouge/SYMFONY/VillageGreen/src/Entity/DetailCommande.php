@@ -30,27 +30,13 @@ class DetailCommande
     private $quantite;
 
     /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $adresse;
-
-    /**
-     * @ORM\Column(type="string", length=100)
-     */
-    private $ville;
-
-    /**
-     * @ORM\Column(type="string", length=5)
-     */
-    private $cp;
-
-    /**
      * @ORM\OneToMany(targetEntity=Produit::class, mappedBy="detail_commande")
      */
     private $produits;
 
     /**
      * @ORM\ManyToOne(targetEntity=Commande::class, inversedBy="detailCommandes")
+     * @ORM\JoinColumn(nullable=false)
      */
     private $commande;
 
@@ -84,42 +70,6 @@ class DetailCommande
     public function setQuantite(int $quantite): self
     {
         $this->quantite = $quantite;
-
-        return $this;
-    }
-
-    public function getAdresse(): ?string
-    {
-        return $this->adresse;
-    }
-
-    public function setAdresse(string $adresse): self
-    {
-        $this->adresse = $adresse;
-
-        return $this;
-    }
-
-    public function getVille(): ?string
-    {
-        return $this->ville;
-    }
-
-    public function setVille(string $ville): self
-    {
-        $this->ville = $ville;
-
-        return $this;
-    }
-
-    public function getCp(): ?string
-    {
-        return $this->cp;
-    }
-
-    public function setCp(string $cp): self
-    {
-        $this->cp = $cp;
 
         return $this;
     }

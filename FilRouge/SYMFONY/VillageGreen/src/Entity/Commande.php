@@ -25,12 +25,12 @@ class Commande
     private $date_commande;
 
     /**
-     * @ORM\Column(type="date")
+     * @ORM\Column(type="date", nullable=true)
      */
     private $date_reglement;
 
     /**
-     * @ORM\Column(type="date")
+     * @ORM\Column(type="date", nullable=true)
      */
     private $date_livraison;
 
@@ -41,6 +41,7 @@ class Commande
 
     /**
      * @ORM\ManyToOne(targetEntity=Client::class, inversedBy="commandes")
+     * @ORM\JoinColumn(nullable=false)
      */
     private $client;
 

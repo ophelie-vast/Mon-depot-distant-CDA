@@ -6,7 +6,7 @@
 
 <div class="row" id="ariane">
     <ul class="crumb">
-        <li style="border-radius: 50px 0 0 50px; padding-left: 15px;"><a href="/">Accueil</a></li>
+        <li style="border-radius: 50px 0 0 50px; padding-left: 15px;"><a href="{{ path('categorie') }}">Accueil</a></li>
         <li><a href="{{ path('souscategorie', {id : descriptif.sousCategorie.categorie.id}) }}">
                 {{ descriptif.sousCategorie.categorie.nom}}</a></li>
         <li style="border-radius: 0 50px 50px 0; padding-right: 15px;">
