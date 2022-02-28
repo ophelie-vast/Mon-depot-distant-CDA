@@ -40,6 +40,7 @@ class DetailCommande
      */
     private $commande;
 
+
     public function __construct()
     {
         $this->produits = new ArrayCollection();

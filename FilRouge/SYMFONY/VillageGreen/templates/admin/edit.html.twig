@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier produit{% endblock %}
+
+{% block body %}
+
+<button type="button" class="btn btn-dark">
+    <a href="{{ path('admin_index') }}">Retour à la liste de produits</a>
+</button>
+
+<h1 id="titre-admin"> Modifier le produit </h1>
+
+{{ include('admin/_form.html.twig', {'button_label': 'Enregistrer'}) }}
+
+{{ include('admin/_delete_form.html.twig') }}
+{% endblock %}

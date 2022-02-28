@@ -17,7 +17,7 @@ class InformationsClientController extends AbstractController
     /**
      * @Route("/profil", name="profil_client")
      */
-    public function index(ClientRepository $client): Response
+    public function ProfilClient(ClientRepository $client): Response
     {
         $profil = $client->findOneBy(['users' => $this->getUser()]);
 

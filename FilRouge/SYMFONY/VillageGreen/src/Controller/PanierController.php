@@ -113,17 +113,10 @@ class PanierController extends AbstractController
      */
     public function infos_client(ClientRepository $client): Response
     {
-        if (!$this->getUser()) {
-            $this->addFlash('connexion', 'Veuillez vous connecter');
-            return $this->redirectToRoute('app_login');
-        } else {
-            if (!$client->findOneBy(['users' => $this->getUser()])) {
-                $this->addFlash('error_profil', 'Veuillez entrer vos informations');
-                return $this->redirectToRoute('profil_client');
-            }
+        if (!$client->findOneBy(['users' => $this->getUser()])) {
+            $this->addFlash('error_profil', 'Veuillez entrer vos informations');
+            return $this->redirectToRoute('profil_client');
         }
-
-        dump($this->getUser());
 
         return $this->render('informations_client/index.html.twig', [
             'profil' => $client->findOneBy(['users' => $this->getUser()]),

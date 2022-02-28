@@ -33,11 +33,6 @@ class Produit
     private $photo;
 
     /**
-     * @ORM\Column(type="string", length=5)
-     */
-    private $stock;
-
-    /**
      * @ORM\Column(type="text", length=6555)
      */
     private $descriptif;
@@ -89,18 +84,6 @@ class Produit
     public function setPhoto(string $photo): self
     {
         $this->photo = $photo;
-
-        return $this;
-    }
-
-    public function getStock(): ?string
-    {
-        return $this->stock;
-    }
-
-    public function setStock(string $stock): self
-    {
-        $this->stock = $stock;
 
         return $this;
     }

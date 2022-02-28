@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Liste des produits {% endblock %}
+
+{% block body %}
+<h1 id="titre-admin">Liste de tous les produits</h1>
+
+<button type="button" class="btn btn-primary">
+    <a href="{{ path('admin_new') }}">Créer nouveau produit</a>
+</button>
+
+<table class="table">
+    <thead>
+        <tr id="nom-panier">
+            <th>ID</th>
+            <th>Nom</th>
+            <th>Prix</th>
+            <th>Photo</th>
+            <th>Description du produit</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for produit in produits %}
+        <tr>
+            <td>{{ produit.id }}</td>
+            <td>{{ produit.nom }}</td>
+            <td>{{ produit.prixAchat }} &euro;</td>
+            <td>
+                <img class="img-fluid" src="/assets/images/produits/{{ produit.photo }}" alt="{{ produit.nom }}">
+            </td>
+            <td>{{ produit.descriptif | nl2br }}</td>
+            <td>
+
+                <div class="pb-1">
+                    <button type="button" class="btn btn-dark">
+                        <a href="{{ path('admin_show', {'id': produit.id}) }}">Détails</a>
+                    </button>
+                </div>
+
+                <button type="button" class="btn btn-warning">
+                    <a href="{{ path('admin_edit', {'id': produit.id}) }}" class="text-dark">Modifier</a>
+                </button>
+            </td>
+        </tr>
+        {% else %}
+        <tr>
+            <td colspan="6">Pas de produits trouvés</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

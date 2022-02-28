@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} {{ produit.nom }} {% endblock %}
+
+{% block body %}
+
+<button type="button" class="btn btn-dark">
+    <a href="{{ path('admin_index') }}">Retour à la liste de produits</a>
+</button>
+
+<h1 id="titre-admin"> {{ produit.nom }} </h1>
+
+<table class="table">
+    <tbody>
+        <tr>
+            <th id="nom-panier">ID</th>
+            <td>{{ produit.id }}</td>
+        </tr>
+        <tr>
+            <th id="nom-panier">Nom</th>
+            <td>{{ produit.nom }}</td>
+        </tr>
+        <tr>
+            <th id="nom-panier">Prix d'achat</th>
+            <td>{{ produit.prixAchat }} &euro;</td>
+        </tr>
+        <tr>
+            <th id="nom-panier">Photo</th>
+            <td>
+                <img class="img-fluid" src="/assets/images/produits/{{ produit.photo }}" alt="{{ produit.nom }}">
+            </td>
+        </tr>
+        <tr>
+            <th id="nom-panier">Description du produit</th>
+            <td>{{ produit.descriptif | nl2br }}</td>
+        </tr>
+    </tbody>
+</table>
+
+
+<button type="button" class="btn btn-warning">
+    <a href="{{ path('admin_edit', {'id': produit.id}) }}" class="text-dark">Modifier</a>
+</button>
+
+{{ include('admin/_delete_form.html.twig') }}
+
+{% endblock %}

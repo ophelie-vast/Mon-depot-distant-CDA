@@ -38,9 +38,11 @@ security:
         # - { path: ^/admin, roles: ROLE_ADMIN }
         # - { path: ^/profile, roles: ROLE_USER }
 
-        - { path: ^/panier, roles: ROLE_USER }
-        - { path: ^/informations_client, roles: ROLE_USER }
-        - { path: ^/profil_client, roles: ROLE_USER }
+        - { path: ^/informations/client, roles: ROLE_USER }
+        - { path: ^/profil, roles: ROLE_USER }
+        - { path: ^/validation/commande, roles: ROLE_USER }
+        - { path: ^/admin, roles: ROLE_ADMIN }
+
 
 when@test:
     security:

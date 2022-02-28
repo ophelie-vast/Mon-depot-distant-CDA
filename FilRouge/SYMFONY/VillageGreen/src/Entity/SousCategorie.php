@@ -40,6 +40,11 @@ class SousCategorie
      */
     private $photo;
 
+    public function __toString()
+    {
+        return $this->nom;
+    }
+
     public function __construct()
     {
         $this->produit = new ArrayCollection();
