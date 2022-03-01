@@ -36,12 +36,20 @@ class AdminController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager->persist($produit);
-            $entityManager->flush();
+            $photoType = array("image/jpeg", "image/jpg", "image/png");
+            $fichierobjet = $request->files->get('produit');
+            $fichier = $fichierobjet['photo'];
 
-            return $this->redirectToRoute('admin_index', [], Response::HTTP_SEE_OTHER);
+            if (in_array($fichier->getClientMimeType(), $photoType)) {
+                if ($fichier->move('assets/images/produits/', $fichier->getClientOriginalName())) {
+                    $produit->setPhoto($fichier->getClientOriginalName());
+                    $entityManager->persist($produit);
+                    $entityManager->flush();
+
+                    return $this->redirectToRoute('admin_index', [], Response::HTTP_SEE_OTHER);
+                }
+            }
         }
-
         return $this->renderForm('admin/new.html.twig', [
             'produit' => $produit,
             'form' => $form,
@@ -65,8 +73,20 @@ class AdminController extends AbstractController
     {
         $form = $this->createForm(ProduitType::class, $produit);
         $form->handleRequest($request);
+        $produit->setPhoto($produit->getPhoto());
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $photoType = array("image/jpeg", "image/jpg", "image/png");
+            $fichierobjet = $request->files->get('produit');
+
+            $fichier = $fichierobjet['photo'];
+            if (!empty($fichier)&& in_array($fichier->getClientmimeType(), $photoType)) {
+                if ($fichier->move('assets/images/produits/', $fichier->getClientOriginalName())) {
+                    $produit->setPhoto($fichier->getClientOriginalName());
+                }
+
+            }
+
             $entityManager->flush();
 
             return $this->redirectToRoute('admin_index', [], Response::HTTP_SEE_OTHER);
