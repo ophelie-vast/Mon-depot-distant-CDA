@@ -1,41 +1,31 @@
--- phpMyAdmin SQL Dump
--- version 5.1.2
--- https://www.phpmyadmin.net/
---
--- Hôte : database:3306
--- Généré le : mar. 22 fév. 2022 à 08:30
--- Version du serveur : 10.3.32-MariaDB-1:10.3.32+maria~focal
--- Version de PHP : 8.0.15
+/* Données pour la table FOURNISSEURS */
 
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-START TRANSACTION;
-SET time_zone = "+00:00";
+INSERT INTO `fournisseur` (`nom`, `prenom`,`adresse`,`ville`,`cp`,`telephone`) VALUES
+
+    ('DUPONT', 'Jean-Claude', '2 rue des Pigeons', 'Cabanac', '65350', '0601020304'),
+    ('HUBAUT', 'Victor', '50 rue Jean Valjean', 'Amiens', '80000', '0610203040'),
+    ('JACKSON', 'Mickael', '10 rue du Paradis', 'Gajac', '33430', '0753415896'),
+    ('HENRY', 'Ludovic', '20 rue des pleures', 'Galez', '65330', '0690807020'),
+    ('LILO', 'Lola', '560 rue Tiens le Bien', 'Zincourt', '88330', '0365987411');
 
 
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
+/* Données pour la table COMMERCIAL */
 
---
--- Base de données : `VillageGreen`
---
+INSERT INTO `commercial` (`nom`,`prenom`) VALUES
 
--- --------------------------------------------------------
+    ('FAUCHOIS', 'Pascale'),
+    ('SPICHER', 'Dominique'),
+    ('IDEAL', 'Louise'),
+    ('DUMEGE', 'Micheline'),
+    ('LELOIRE', 'Lucie'),
+    ('VAST', 'Ophélie'),
+    ('PETIT', 'Ludovic'),
+    ('GRAND', 'Pascale'),
+    ('FRERE', 'Paul'),
+    ('MOYEN', 'Lisa');
 
---
--- Structure de la table `categorie`
---
 
-CREATE TABLE `categorie` (
-  `id` int(11) NOT NULL,
-  `nom` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `photo` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Déchargement des données de la table `categorie`
---
+/* Données pour la table CATEGORIE */
 
 INSERT INTO `categorie` (`id`, `nom`, `photo`) VALUES
 (1, 'Guitares', 'guitare.png'),
@@ -45,25 +35,50 @@ INSERT INTO `categorie` (`id`, `nom`, `photo`) VALUES
 (5, 'Sonos', 'sono.png'),
 (6, 'Accessoires', 'accessoires.png');
 
--- --------------------------------------------------------
 
---
--- Structure de la table `produit`
---
+/* Données pour la table CLIENT */
 
-CREATE TABLE `produit` (
-  `id` int(11) NOT NULL,
-  `sous_categorie_id` int(11) DEFAULT NULL,
-  `nom` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `prix_achat` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `photo` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `stock` varchar(5) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `descriptif` text COLLATE utf8mb4_unicode_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+INSERT INTO `client` (`nom`,`prenom`,`adresse`,`cp`,`ville`,`telephone`,`type`,`id_commercial`) VALUES 
 
---
--- Déchargement des données de la table `produit`
---
+    ('NICLO', 'Vincent', '10 avenue de l Opera', '75000', 'Paris', '0758246589', 'pro', 1),
+    ('ROCH', 'Voisine', '65 avenue d Hélène', '14000', 'Caen', '0632541289', 'pro', 2),
+    ('GALL', 'France', '100 rue du piano', '09300', 'Nalzen', '0625356478', 'pro', 3),
+    ('GREGORIO', 'MICKAEL', '45 avenue des imitations', '50400', 'Yquelon', '0698521478', 'pro', 4),
+    ('VITAA', 'Slimane', '20 rue du Palais', '62770', 'Wamin', '0789652145', 'pro', 5),
+    ('DUPUIS', 'Jean', '56 rue des Parapluies', '33420', 'Cabara', '0652417898', 'par', 6),
+    ('DUBOIS', 'Elsa', '98 rue des danseurs', '82160', 'Parisot', '0785256498', 'par', 7),
+    ('LEFEVRE', 'Julien', '413 rue des chiens', '72500', 'Vaas', '0789652487', 'par', 8),
+    ('GOVIN', 'Marine', '63 avenue de l Hippodrome', '60120', 'Paillart', '0632541789', 'par', 9),
+    ('VILTARD', 'Maureen', '99 rue de la femme', '34800', 'Octon', '0725418963', 'par', 10);
+
+
+/* Données pour la table SOUS_Catégorie */    
+
+INSERT INTO `sous_categorie` (`id`, `categorie_id`, `nom`, `photo`) VALUES
+(1, 2, 'Pianos à queue', 'piano_queue.jpg'),
+(2, 2, 'Pianos droits', 'piano_droit.jpg'),
+(3, 2, 'Pianos numeriques', 'piano_numerique.jpg'),
+(4, 1, 'Guitares électriques', 'electrique.jpeg'),
+(5, 1, 'Guitares classiques', 'classique.jpeg'),
+(6, 5, 'Tables de mixage', 'mixage.jpeg'),
+(7, 5, 'Enceintes', 'enceinte.jpeg'),
+(8, 3, 'Saxophones', 'saxophone.jpeg'),
+(9, 3, 'Harmonicas', 'harmonicas.jpeg'),
+(10, 3, 'Flûtes à bec', 'flute.jpeg'),
+(11, 4, 'Batteries électroniques', 'electronique.jpeg'),
+(12, 4, 'Batteries acoustiques', 'acoustiques.jpeg'),
+(13, 6, 'Casques', 'casque.jpeg'),
+(14, 6, 'Pieds pour microphone', 'pied.jpeg'),
+(15, 6, 'Bancs', 'banc.jpeg'),
+(16, 5, 'Microphones', 'microphone.jpeg'),
+(17, 2, 'Accordéons', 'accordeon.jpeg'),
+(18, 3, 'Trompettes', 'trompette.jpeg'),
+(19, 5, 'Amplificateurs de puissance', 'ampli.jpeg'),
+(20, 6, 'Clés USB', 'usb.jpeg'),
+(21, 1, 'Ukulélés', 'ukulele.jpeg'),
+(22, 1, 'Autres instruments à cordes pincées', 'autres.jpeg');
+
+/* Données pour la table PRODUIT */
 
 INSERT INTO `produit` (`id`, `sous_categorie_id`, `nom`, `prix_achat`, `photo`, `stock`, `descriptif`) VALUES
 (1, 1, 'Kawai GL 10 WH/P Grand Piano', '11 290', 'piano_queue_1.jpg', '3', '∙ Mécanique Millennium III avec pièces en ABS Styran. \r\n∙ Pédale sostenuto\r\n∙ Têtes des marteaux avec feutre. Couvre clavier à fermeture lente. \r\n∙ Longueur: 153 cm. \r\n∙ Poids: 282 kg. \r\n∙ Finition: Blanc poli. \r\n∙ Banc inclus.'),
@@ -180,147 +195,34 @@ INSERT INTO `produit` (`id`, `sous_categorie_id`, `nom`, `prix_achat`, `photo`, 
 (111, 22, 'Oscar Schmidt OS73B 1930\' Reissue Autoharp', '473', 'autres4.jpeg', '6', '∙ Réédition 1930.\r\n∙ 15 accords.\r\n∙ Table en épicéa massif.\r\n∙ Corps en épicéa.\r\n∙ Couleur: Noir satiné.'),
 (112, 22, 'James Neligan Cask Hogscoal', '186', 'autres5.jpeg', '8', '∙ 4 cordes.\r\n∙ Forme de boîte à cigares.\r\n∙ Table en sapele.\r\n∙ Fond et éclisses en épicéa.\r\n∙ 2 rosaces avec revêtement en bois synthétique.\r\n∙ Manche en acajou.\r\n∙ Touche et chevalet en ovangkol.\r\n∙ Repères \"points\" en ABS.\r\n∙ Sillets de tête et de chevalet en ABS.\r\n∙ Diapason: 600 mm.\r\n∙ Largeur au sillet: 33 mm.\r\n∙ 1 micro P90.\r\n∙ 1 réglage de volume.\r\n∙ 1 réglage de tonalité.\r\n∙ Finition: Vernis à pores ouverts.\r\n∙ Couleur: Cask Coal.\r\n∙ Livrée en housse.');
 
--- --------------------------------------------------------
 
---
--- Structure de la table `sous_categorie`
---
+/* Données pour la table COMMANDE */
 
-CREATE TABLE `sous_categorie` (
-  `id` int(11) NOT NULL,
-  `categorie_id` int(11) DEFAULT NULL,
-  `nom` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `photo` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+    INSERT INTO `commande` (`date_commande`,`detail_commande`, `prix_commande`,`date_reglement`,`reduction_commande`,`adresse_livraison`,`ville_livraison`,`cp_livraison`,`adresse_facturation`,`ville_facturation`,`cp_facturation`,`id_client`) VALUES
 
---
--- Déchargement des données de la table `sous_categorie`
---
+        ("2021-11-10", 'saxo + cable', 189.98, "2021-11-10", 0, '56 rue des Parapluies', 'Cabara', '33420', '56 rue des Parapluies', 'Cabara', '33420', 3),
+        ("2021-11-11", 'guitare', 159.49, "2021-11-11",0 , '99 rue de la femme', 'Octon', '34800', '99 rue de la femme', 'Octon', '34800', 6);
 
-INSERT INTO `sous_categorie` (`id`, `categorie_id`, `nom`, `photo`) VALUES
-(1, 2, 'Pianos à queue', 'piano_queue.jpg'),
-(2, 2, 'Pianos droits', 'piano_droit.jpg'),
-(3, 2, 'Pianos numeriques', 'piano_numerique.jpg'),
-(4, 1, 'Guitares électriques', 'electrique.jpeg'),
-(5, 1, 'Guitares classiques', 'classique.jpeg'),
-(6, 5, 'Tables de mixage', 'mixage.jpeg'),
-(7, 5, 'Enceintes', 'enceinte.jpeg'),
-(8, 3, 'Saxophones', 'saxophone.jpeg'),
-(9, 3, 'Harmonicas', 'harmonicas.jpeg'),
-(10, 3, 'Flûtes à bec', 'flute.jpeg'),
-(11, 4, 'Batteries électroniques', 'electronique.jpeg'),
-(12, 4, 'Batteries acoustiques', 'acoustiques.jpeg'),
-(13, 6, 'Casques', 'casque.jpeg'),
-(14, 6, 'Pieds pour microphone', 'pied.jpeg'),
-(15, 6, 'Bancs', 'banc.jpeg'),
-(16, 5, 'Microphones', 'microphone.jpeg'),
-(17, 2, 'Accordéons', 'accordeon.jpeg'),
-(18, 3, 'Trompettes', 'trompette.jpeg'),
-(19, 5, 'Amplificateurs de puissance', 'ampli.jpeg'),
-(20, 6, 'Clés USB', 'usb.jpeg'),
-(21, 1, 'Ukulélés', 'ukulele.jpeg'),
-(22, 1, 'Autres instruments à cordes pincées', 'autres.jpeg');
 
--- --------------------------------------------------------
+/* Données pour la table LIVRAISON */
 
---
--- Structure de la table `user`
---
+    INSERT INTO `livraison` (`bon_livraison`,`date_livraison`,`date_expedition`,`id_commande`) VALUES
 
-CREATE TABLE `user` (
-  `id` int(11) NOT NULL,
-  `email` varchar(180) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `roles` longtext COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '(DC2Type:json)',
-  `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `is_verified` tinyint(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+       ('bon de livraison', "2021-11-21", "2021-11-18", 1),
+       ('bon de livraison', "2021-11-22", "2021-11-17", 2); 
 
---
--- Déchargement des données de la table `user`
---
+    
+/* Données pour la table CONTIENT */
 
-INSERT INTO `user` (`id`, `email`, `roles`, `password`, `is_verified`) VALUES
-(1, 'toto@dfg.dfg', '[]', '$2y$13$17lDMwdvrtXOeltRXfpQN.U.PSG11IHJBcpJNqletMaIsk263uYU6', 0),
-(2, 'totop@dfg.dfg', '[]', '$2y$13$.H56O6l8AAYER6zlR0Rv..IffzjIjY6Pbsb8YuaswR3/oMjSibQH6', 0),
-(3, 'hgjfuhr@lkjj.fr', '[]', '$2y$13$xZ.q3iwjgg2hK9Qz7DWWT.koNPLqvcOHaUQ7ArEcatHq74QDsQVA2', 0),
-(4, 'test@dupont.com', '[]', '$2y$13$FWI0Byl6VIbahsA94MS/l.jkxEa8BG0eEB11OU10rxzh4nn07cd6i', 0);
+INSERT INTO `contient` (`id_produit`,`id_livraison`,`quantite_produit`) VALUES
 
---
--- Index pour les tables déchargées
---
+    (1,1,1),
+    (2,2,1);
 
---
--- Index pour la table `categorie`
---
-ALTER TABLE `categorie`
-  ADD PRIMARY KEY (`id`);
 
---
--- Index pour la table `produit`
---
-ALTER TABLE `produit`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `IDX_29A5EC27365BF48` (`sous_categorie_id`);
+/* Données pour la table SECOMPOSEDE */
 
---
--- Index pour la table `sous_categorie`
---
-ALTER TABLE `sous_categorie`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `IDX_52743D7BBCF5E72D` (`categorie_id`);
+INSERT INTO `secomposede` (`id_produit`,`id_commande`,`quantite_commandé`) VALUES
 
---
--- Index pour la table `user`
---
-ALTER TABLE `user`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `UNIQ_8D93D649E7927C74` (`email`);
-
---
--- AUTO_INCREMENT pour les tables déchargées
---
-
---
--- AUTO_INCREMENT pour la table `categorie`
---
-ALTER TABLE `categorie`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
-
---
--- AUTO_INCREMENT pour la table `produit`
---
-ALTER TABLE `produit`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=113;
-
---
--- AUTO_INCREMENT pour la table `sous_categorie`
---
-ALTER TABLE `sous_categorie`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
-
---
--- AUTO_INCREMENT pour la table `user`
---
-ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-
---
--- Contraintes pour les tables déchargées
---
-
---
--- Contraintes pour la table `produit`
---
-ALTER TABLE `produit`
-  ADD CONSTRAINT `FK_29A5EC27365BF48` FOREIGN KEY (`sous_categorie_id`) REFERENCES `sous_categorie` (`id`);
-
---
--- Contraintes pour la table `sous_categorie`
---
-ALTER TABLE `sous_categorie`
-  ADD CONSTRAINT `FK_52743D7BBCF5E72D` FOREIGN KEY (`categorie_id`) REFERENCES `categorie` (`id`);
-COMMIT;
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+    (1,1,1),
+    (2,2,1);
