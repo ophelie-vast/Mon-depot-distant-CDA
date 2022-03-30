@@ -26,8 +26,8 @@
         <a href="{{ path('app_register') }}" class="text-primary text-center">Pas encore de compte? Inscrivez-vous</a>
     </div>
 
-    <div class="row connexion">
-        <div class="col-12">
+    <div class="row">
+        <div class="col-12 mx-auto py-4 w-75">
 
             {% for flash_error in app.flashes('connexion') %}
             <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
@@ -41,6 +41,9 @@
                 autocomplete="current-password" required>
 
             <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+            <div class="form-group pt-4 text-center">
+                <button type="submit" class="btn btn-dark">Se connecter</button>
+            </div>
         </div>
     </div>
 
@@ -56,11 +59,7 @@
     </div>
     #}
 
-    <div class="row">
-        <div class="col-12 bouton-connexion">
-            <button type="submit" class="btn btn-dark">Se connecter</button>
-        </div>
-    </div>
+
 
 </form>
 {% endblock %}

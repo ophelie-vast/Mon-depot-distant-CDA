@@ -15,8 +15,8 @@
 
 <h1 id="titre"> Inscrivez-vous </h1>
 
-<div class="row connexion">
-    <div class="col-12">
+<div class="row">
+    <div class="col-12 mx-auto py-4 w-75">
 
 
         {{ form_start(registrationForm) }}
@@ -29,12 +29,10 @@
 
         {{ form_row(registrationForm.agreeTerms) }}
 
-    </div>
-</div>
+        <div class="form-group pt-4 text-center">
+            <button type="submit" class="btn btn-dark">Créer mon compte</button>
+        </div>
 
-<div class="row">
-    <div class="col-12 bouton-connexion">
-        <button type="submit" class="btn btn-dark">Créer mon compte</button>
     </div>
 </div>
 

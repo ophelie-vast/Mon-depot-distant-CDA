@@ -41,14 +41,9 @@
     </div>
     <hr>
     {% endfor %}
-</div>
 
-<div class="row">
-    <div class="col-12" id="pagination">
+    {{ knp_pagination_render(tous_produits) }}
 
-        {{ knp_pagination_render(tous_produits) }}
-
-    </div>
 </div>
 
 {% endblock %}
