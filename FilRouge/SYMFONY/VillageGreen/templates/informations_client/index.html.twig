@@ -13,7 +13,7 @@
 <h1 id="titre"> Votre profil </h1>
 
 <div class="row">
-    <div class="col-6" id="infos-client">
+    <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6" id="infos-client">
         <p class="adresse">Adresse de facturation</p>
 
         <input class="form-control" type="text" placeholder="{{ profil.nom }}" aria-label="Disabled input example"
@@ -33,7 +33,7 @@
     </div>
 
 
-    <div class="col-6" id="infos-client">
+    <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6" id="infos-client">
         <p class="adresse">Adresse de livraison</p>
 
         <input class="form-control" type="text" placeholder="{{ profil.nom }}" aria-label="Disabled input example"
@@ -54,7 +54,7 @@
 </div>
 
 <div class="row">
-    <div class="col-12 bouton-connexion">
+    <div class="col-12 pt-4 text-center">
 
         <button type="submit" class="btn btn-danger">
             <a class="valider" href="{{ path('profil_client') }}">

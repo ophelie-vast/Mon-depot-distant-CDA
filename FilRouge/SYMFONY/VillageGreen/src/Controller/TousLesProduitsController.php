@@ -21,7 +21,7 @@ class TousLesProduitsController extends AbstractController
             $liste_tous_les_produits,
             $request->query->getInt('page', 1),
             5
-        );
+        );   
 
         return $this->render('catalogue/index.html.twig', [
             'tous_produits' => $liste_tous_les_produits,

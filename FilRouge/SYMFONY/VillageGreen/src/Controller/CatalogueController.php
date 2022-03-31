@@ -5,10 +5,11 @@ namespace App\Controller;
 use App\Repository\ProduitRepository;
 use App\Repository\CategorieRepository;
 use App\Repository\SousCategorieRepository;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-
+use Symfony\Component\HttpFoundation\Request;
 
 class CatalogueController extends AbstractController
 {
@@ -40,9 +41,14 @@ class CatalogueController extends AbstractController
     /**
      * @Route("/produit/{id}", name="produit")
      */
-    public function produit_liste(ProduitRepository $repo, $id): Response
+    public function produit_liste(ProduitRepository $repo, PaginatorInterface $paginator, Request $request, $id): Response
     {
         $souscategorie = $repo->findBy(['sousCategorie' => $id]);
+        $souscategorie = $paginator->paginate(
+            $souscategorie,
+            $request->query->getInt('page', 1),
+            5
+        );
 
         return $this->render('produit/index.html.twig', [
             'produits' => $souscategorie,
