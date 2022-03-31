@@ -30,7 +30,9 @@
         <p class="nom">{{ row.nom }}</p>
 
         <button type="button" class="btn btn-dark" id="bouton">
-            <a class="valider" href="{{ path('details', {id : row.id}) }}">détails</a>
+            <a class="valider" href="{{ path('details', {id : row.id}) }}">
+                <i class="fa-solid fa-circle-info"></i>
+            </a>
         </button>
 
     </div>
@@ -38,7 +40,7 @@
     <div class="col-12 col-sm-12 col-md-12 col-lg-2 col-xl-2">
         <p class="prix-produit">{{ row.prixachat }} &euro;</p>
 
-        <button type="button" class="btn btn-success" id="bouton">
+        <button type="button" class="btn btn-warning" id="bouton">
             <a class="valider" href="{{ path('add', {id: row.id}) }}">
                 <i class="fa-solid fa-cart-plus"></i>
             </a>

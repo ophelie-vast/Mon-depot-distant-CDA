@@ -109,6 +109,17 @@ class PanierController extends AbstractController
     }
 
     /**
+     * @Route("/deleteall", name="delete_all")
+     */
+
+    public function deleteAll(SessionInterface $session)
+    {
+        $session->remove("panier");
+
+        return $this->redirectToRoute("panier");
+    }
+
+    /**
      * @Route("/informations/client", name="informations_client")
      */
     public function infos_client(ClientRepository $client): Response

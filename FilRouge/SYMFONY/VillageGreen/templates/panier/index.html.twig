@@ -12,6 +12,11 @@
 
 <h1 id="titre"> Votre panier</h1>
 <br><br>
+
+{% if lignes %}
+<a href="{{ path('delete_all') }}" class="btn btn-danger"> Vider mon panier</a>
+{% endif %}
+
 <div class="row">
     <table class="table">
         <thead>
